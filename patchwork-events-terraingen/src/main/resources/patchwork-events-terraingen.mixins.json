@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.patchworkmc.mixin.event.terraingen",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinBiomeLayers",
+    "MixinVanillaLayeredBiomeSource"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
