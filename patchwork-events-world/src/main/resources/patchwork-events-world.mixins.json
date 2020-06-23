@@ -5,6 +5,7 @@
   "mixins": [
     "MixinChunk",
     "MixinChunkGenerator",
+    "MixinChunkSerializer",
     "MixinMinecraftServer",
     "MixinServerPlayerInteractionManager",
     "MixinServerWorld",
