@@ -19,12 +19,15 @@
 
 package net.minecraftforge.event.world;
 
+import javax.annotation.Nullable;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.Event;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.ChunkStatus;
 
 /**
  * ChunkDataEvent is fired when an event involving chunk data occurs.<br>
@@ -59,8 +62,23 @@ public class ChunkDataEvent extends ChunkEvent {
 	 * This event is fired on the {@link MinecraftForge#EVENT_BUS}.<br>
 	**/
 	public static class Load extends ChunkDataEvent {
+		private ChunkStatus.ChunkType status;
+
+		// This constructor was deprecated (in 1.14.4 forge) after yarnforge was created.
+		// I have opted to use the newer code since it is fully compatible with the old code.
+		@Deprecated
 		public Load(Chunk chunk, CompoundTag data) {
 			super(chunk, data);
+		}
+
+		public Load(Chunk chunk, CompoundTag data, ChunkStatus.ChunkType status) {
+			super(chunk, data);
+			this.status = status;
+		}
+
+		@Nullable
+		public ChunkStatus.ChunkType getStatus() {
+			return this.status;
 		}
 	}
 

@@ -32,6 +32,6 @@ public class MixinChunkSerializer {
 	@Inject(at = @At(value = "NEW", target = "net/minecraft/world/chunk/ReadOnlyChunk"), method = "deserialize", locals = LocalCapture.CAPTURE_FAILHARD)
 	private static void loadChunkData(ServerWorld serverWorld, StructureManager structureManager, PointOfInterestStorage pointOfInterestStorage, ChunkPos chunkPos, CompoundTag compoundTag, CallbackInfoReturnable<ProtoChunk> cir, ChunkGenerator<?> chunkGenerator, BiomeSource biomeSource, CompoundTag levelTag, Biome[] biomes,
 			UpgradeData upgradeData, ChunkTickScheduler<?> chunkTickScheduler, ChunkTickScheduler<?> chunkTickScheduler2, boolean bl, ListTag listTag, int k, ChunkSection[] chunkSections, boolean bl2, ChunkManager chunkManager, LightingProvider lightingProvider, long n, ChunkStatus.ChunkType chunkType, Chunk chunk) {
-		MinecraftForge.EVENT_BUS.post(new ChunkDataEvent.Load(chunk, levelTag));
+		MinecraftForge.EVENT_BUS.post(new ChunkDataEvent.Load(chunk, levelTag, chunkType));
 	}
 }
